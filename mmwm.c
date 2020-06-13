@@ -273,6 +273,8 @@ static void unmapnotify(xcb_generic_event_t *e);
 static void xerror(xcb_generic_event_t *e);
 static alien *wintoalien(list *l, xcb_window_t win);
 static client *wintoclient(xcb_window_t w);
+/* merged back from frankenwm */
+static void rotate(const Arg *arg);
 
 #include "config.h"
 
@@ -700,6 +702,12 @@ static desktop *find_desktop(unsigned int n)
     return d;
 }
 
+/* jump and focus the next or previous desktop from frankenwm, merged back in */
+void rotate(const Arg *arg)
+{
+    change_desktop(&(Arg)
+                   {.i = (DESKTOPS + current_desktop_number + arg->i) % DESKTOPS});
+}
 static void getparents(client *c, display **di, monitor **mo, desktop **de)
 {
     display *disp;

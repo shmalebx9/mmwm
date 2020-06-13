@@ -104,6 +104,9 @@ static key keys[] = {
        DESKTOPCHANGE(    XK_8,                             7)
        DESKTOPCHANGE(    XK_9,                             8)
        DESKTOPCHANGE(    XK_0,                             9)
+       
+    {  MOD4,       XK_Left,          rotate,            {.i = -1}},
+    {  MOD4,       XK_Right,          rotate,            {.i = +1}},
     /* exit */
     {  MOD4|CONTROL,     XK_q,          quit,              {.i = 0}},
 };
